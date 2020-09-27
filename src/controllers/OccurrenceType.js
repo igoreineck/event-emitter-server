@@ -19,7 +19,7 @@ module.exports = {
     try {
       await OccurenceType.query().insert({ name: name });
 
-      return res.status(201);
+      return res.status(201).json();
     } catch (err) {
       return res.status(400).json(err);
     }

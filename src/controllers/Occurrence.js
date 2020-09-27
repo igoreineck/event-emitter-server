@@ -15,9 +15,11 @@ module.exports = {
 
   async create(req, res) {
     try {
-      await Occurrence.query().insert(req.body);
+      const occurrence = await Occurrence.query().insert(req.body);
 
-      return res.status(201);
+      req.io.emit("occurrences", occurrence);
+
+      return res.status(201).json();
     } catch (err) {
       return res.status(400).json(err);
     }
