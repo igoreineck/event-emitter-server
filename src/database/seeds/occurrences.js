@@ -8,7 +8,7 @@ async function generateRandomOccurrences(knex) {
     .where("name", "Falta de água")
     .first();
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 50; i++) {
     let occurrence = {
       name: `Nome teste ${i}`,
       description: `Descrição teste ${i}`,

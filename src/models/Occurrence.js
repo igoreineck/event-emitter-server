@@ -10,7 +10,7 @@ class Occurence extends Model {
 
     return {
       occurrences: {
-        relation: Model.BelongsToOneRelation,
+        relation: Model.HasOneRelation,
         modelClass: OccurrenceType,
         join: {
           from: "occurrences.occurrence_type_id",

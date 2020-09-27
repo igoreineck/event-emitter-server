@@ -11,7 +11,10 @@ exports.up = async (knex) => {
     table.text("description");
     table.string("cep", 20).notNullable();
     table.string("address", 255).notNullable();
-    table.datetime("start_date").notNullable().defaultTo(knex.fn.now());
+    table
+      .datetime("start_date")
+      .notNullable()
+      .defaultTo(new Date().toISOString());
     table.datetime("end_date");
     table
       .integer("occurrence_type_id")

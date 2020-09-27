@@ -3,8 +3,16 @@ const Occurrence = require("../models/Occurrence");
 module.exports = {
   async index({ res }) {
     const occurrences = await Occurrence.query();
+    const formattedOccurrences = occurrences.map((occurrence) => {
+      const { start_date, end_date } = occurrence;
 
-    return res.json(occurrences);
+      occurrence.start_date = start_date.toLocaleString();
+      occurrence.end_date = end_date.toLocaleString();
+
+      return occurrence;
+    });
+
+    return res.json(formattedOccurrences.reverse());
   },
 
   async show(req, res) {
@@ -31,11 +39,15 @@ module.exports = {
       req.body
     );
 
+    req.io.emit("occurrences", occurrence);
+
     return res.json(occurrence);
   },
 
   async destroy(req, res) {
     const occurrence = await Occurrence.query().deleteById(req.params.id);
+
+    req.io.emit("occurrences", occurrence);
 
     return res.status(204).json(occurrence);
   },
