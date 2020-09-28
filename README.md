@@ -5,6 +5,10 @@
 Primeiramente, você deve ter o repositório do projeto baixado em sua máquina.
 Caso não possua, pode obtê-lo neste link: https://github.com/igoreineck/event-emitter-server.git
 
+### Pré-requisitos
+- NodeJS (em versões mais atualizadas)
+- PostgreSQL
+
 Tendo o repositório, em um terminal, acesse a pasta raiz e execute o seguinte comando para baixar as dependências:
 ```bash
 npm install
